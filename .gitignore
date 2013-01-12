@@ -1,0 +1,5 @@
+config.py
+data/meta/*.json
+data/videos/*.mp4
+data/videos/*.part
+*.pyc
