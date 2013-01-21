@@ -2,6 +2,9 @@
 
 require_once('config.php');
 
+function compare_items($a, $b) {
+	return strnatcmp($b["publishedAt_raw"], $a["publishedAt_raw"]); // Order switched to have reverse sorting
+}
 
 if($handle = opendir('data/meta')){
 	while (false !== ($file = readdir($handle))) {
@@ -11,20 +14,21 @@ if($handle = opendir('data/meta')){
     }
 }
 
+$items = array();
+
 foreach ($metafiles as $metafile) {
-	$item["duration"][] = str_replace(["PT", "H", "M", "S"], ["", ":", ":", ""], $metafile["duration"]);
-	$item["description"][] = substr($metafile["description"], 0, 255);
-	$item["id"][] = $metafile["id"];
-	$item["publishedAt"][] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
-	$item["title"][] = str_replace(["&"], ["&amp;"], $metafile["title"]);
+	$item = array();
+	$item["duration"] = str_replace(["PT", "H", "M", "S"], ["", ":", ":", ""], $metafile["duration"]);
+	$item["description"] = $metafile["description"];
+	$item["summary"] = substr($metafile["description"], 0, 255);
+	$item["id"] = $metafile["id"];
+	$item["publishedAt"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
+	$item["title"] = str_replace(["&"], ["&amp;"], $metafile["title"]);
+	$item["publishedAt_raw"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
+	$items[] = $item;
 }
 
-array_multisort($item["publishedAt"], $item["duration"], $item["description"], $item["id"], $item["title"]);
-$item["duration"] = array_reverse($item["duration"]);
-$item["description"] = array_reverse($item["description"]);
-$item["id"] = array_reverse($item["id"]);
-$item["publishedAt"] = array_reverse($item["publishedAt"]);
-$item["title"] = array_reverse($item["title"]);
+usort($items, "compare_items");
 
 
 header("Content-Type: application/rss+xml");
@@ -49,17 +53,18 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 		<itunes:category text="Technology" />
 		<itunes:explicit>clean</itunes:explicit>
 
-			<?php for ($i=0; $i < count($item["id"]); $i++) { ?>
-<item>
-				<title><?=$item["title"][$i];?></title>
+			<?php foreach ($items as $item) { ?>
+			<item>
+				<title><?=$item["title"];?></title>
+				<description><![CDATA[<?=$item["description"];?>]]></description>
+				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4" length="<?=filesize('data/videos/'.$item["id"].'.mp4');?>" type="video/mp4" />
+				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4</guid>
+				<pubDate><?=$item["publishedAt"];?></pubDate>
 				<itunes:author><?=$author;?></itunes:author>
-				<itunes:subtitle><![CDATA[<?=$item["description"][$i];?>]]></itunes:subtitle>
-				<itunes:summary><![CDATA[<?=$item["description"][$i];?>]]></itunes:summary>
+				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
+				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
 				<itunes:image href="http://rzlcast.horo.li/podcast.png" />
-				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"][$i];?>.mp4" length="<?=filesize('data/videos/'.$item["id"][$i].'.mp4');?>" type="video/mp4" />
-				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"][$i];?>.mp4</guid>
-				<pubDate><?=$item["publishedAt"][$i];?></pubDate>
-				<itunes:duration><?=$item["duration"][$i];?></itunes:duration>
+				<itunes:duration><?=$item["duration"];?></itunes:duration>
 			</item>
 			<?}?>
 	</channel>
