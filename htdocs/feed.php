@@ -16,9 +16,12 @@ if($handle = opendir('data/meta')){
 
 $items = array();
 
+$search = array("PT", "H", "M", "S");
+$replace = array ("", ":", ":", "");
+
 foreach ($metafiles as $metafile) {
 	$item = array();
-	$item["duration"] = str_replace(["PT", "H", "M", "S"], ["", ":", ":", ""], $metafile["duration"]);
+	$item["duration"] = str_replace($search, $replace, $metafile["duration"]);
 	$item["description"] = $metafile["description"];
 	$item["summary"] = substr($metafile["description"], 0, 255);
 	$item["id"] = $metafile["id"];
@@ -32,7 +35,7 @@ foreach ($metafiles as $metafile) {
 usort($items, "compare_items");
 
 
-header("Content-Type: application/rss+xml");
+header("Content-Type: application/rss+xml");pl
 ?><?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
 	<channel>
@@ -48,7 +51,7 @@ header("Content-Type: application/rss+xml");
 			<itunes:name><?= $owner_name; ?></itunes:name>
 			<itunes:email><?= $owner_mail; ?></itunes:email>
 		</itunes:owner>
-		<itunes:image href="http://rzlcast.horo.li/podcast.png" />
+		<itunes:image href="http://rzlcast.horo.li/podcast.jpg" />
 		<itunes:category text="Technology" />
 		<itunes:explicit>clean</itunes:explicit>
 
