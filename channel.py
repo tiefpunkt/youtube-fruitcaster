@@ -76,7 +76,7 @@ def write_metadata(video):
 		f.close()
 	
 def check_video(video):
-	if not os.path.isfile(DIR_METADATA + "/" + video["id"] + ".mp4"):
+	if not os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
 		subprocess.call([YOUTUBE_DL, "-o" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "http://youtu.be/" + video["id"]])
 
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
