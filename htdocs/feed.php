@@ -6,7 +6,7 @@ function compare_items($a, $b) {
 	return strnatcmp($b["publishedAt_raw"], $a["publishedAt_raw"]); // Order switched to have reverse sorting
 }
 
-function xmlentites($str) {
+function xmlentities($str) {
 	$str = str_replace("&", "&amp;", $str);
 	$search = array("<", ">", "'", "\"");
 	$replace = array("&lt;", "&gt;", "&apos;", "&quot;");
