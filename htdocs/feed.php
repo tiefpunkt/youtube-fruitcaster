@@ -22,7 +22,7 @@ foreach ($metafiles as $metafile) {
 	$item["description"] = $metafile["description"];
 	$item["summary"] = substr($metafile["description"], 0, 255);
 	$item["id"] = $metafile["id"];
-	$item["publishedAt"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
+	$item["publishedAt"] = strtotime($metafile["publishedAt"]);
 	$item["title"] = str_replace(["&"], ["&amp;"], $metafile["title"]);
 	$item["publishedAt_raw"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
 	$items[] = $item;
@@ -59,7 +59,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 				<description><![CDATA[<?=$item["description"];?>]]></description>
 				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4" length="<?=filesize('data/videos/'.$item["id"].'.mp4');?>" type="video/mp4" />
 				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4</guid>
-				<pubDate><?=$item["publishedAt"];?></pubDate>
+				<pubDate><?=date(DATE_RFC822, $item["publishedAt"]);?></pubDate>
 				<itunes:author><?=$author;?></itunes:author>
 				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
 				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
