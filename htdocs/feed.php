@@ -25,6 +25,9 @@ if($handle = opendir('data/meta')){
 $items = array();
 
 foreach ($metafiles as $metafile) {
+	if (!file_exists('data/videos/'.$metafile["id"].'.mp4')) {
+		continue;
+	}
 	$item = array();
 	$item["duration"] = str_replace(array("PT", "H", "M", "S"), array ("", ":", ":", ""), $metafile["duration"]);
 	$item["description"] = $metafile["description"];
