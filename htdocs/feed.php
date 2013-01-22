@@ -26,7 +26,7 @@ foreach ($metafiles as $metafile) {
 	$item["summary"] = substr($metafile["description"], 0, 255);
 	$item["id"] = $metafile["id"];
 	$item["publishedAt"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
-	$item["title"] = str_replace(["&"], ["&amp;"], $metafile["title"]);
+	$item["title"] = htmlentities($metafile["title"]);
 	$item["publishedAt_raw"] = strtotime($metafile["publishedAt"]);
 	$item["filesize"] = filesize('data/videos/'.$item["id"].'.mp4');
 	$items[] = $item;
