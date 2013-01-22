@@ -52,9 +52,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 			<itunes:name><?= $owner_name; ?></itunes:name>
 			<itunes:email><?= $owner_mail; ?></itunes:email>
 		</itunes:owner>
-		<itunes:image href="http://rzlcast.horo.li/podcast.jpg" />
+		<itunes:image href="http://rzlcast.horo.li/podcast1400.png" />
 		<itunes:category text="Technology" />
 		<itunes:explicit>clean</itunes:explicit>
+		<itunes:new-feed-url>http://feeds.feedburner.com/RaumzeitlaborPodcast</itunes:new-feed-url>		
 
 			<?php foreach ($items as $item) { ?>
 			<item>
@@ -70,5 +71,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 				<itunes:duration><?=$item["duration"];?></itunes:duration>
 			</item>
 			<?}?>
+			
 	</channel>
 </rss>
