@@ -22,9 +22,10 @@ foreach ($metafiles as $metafile) {
 	$item["description"] = $metafile["description"];
 	$item["summary"] = substr($metafile["description"], 0, 255);
 	$item["id"] = $metafile["id"];
-	$item["publishedAt"] = strtotime($metafile["publishedAt"]);
+	$item["publishedAt"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
 	$item["title"] = str_replace(["&"], ["&amp;"], $metafile["title"]);
-	$item["publishedAt_raw"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
+	$item["publishedAt_raw"] = strtotime($metafile["publishedAt"]);
+	$item["filesize"] = filesize('data/videos/'.$item["id"].'.mp4');
 	$items[] = $item;
 }
 
@@ -32,9 +33,7 @@ usort($items, "compare_items");
 
 
 header("Content-Type: application/rss+xml");
-echo '<?xml version="1.0" encoding="UTF-8"?>';
-?>
-
+?><?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
 	<channel>
 		<title><?= $title; ?></title>
@@ -57,9 +56,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 			<item>
 				<title><?=$item["title"];?></title>
 				<description><![CDATA[<?=$item["description"];?>]]></description>
-				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4" length="<?=filesize('data/videos/'.$item["id"].'.mp4');?>" type="video/mp4" />
+				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4" length="<?=$item["filesize"];?>" type="video/mp4" />
 				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4</guid>
-				<pubDate><?=date(DATE_RFC822, $item["publishedAt"]);?></pubDate>
+				<pubDate><?=$item["publishedAt"];?></pubDate>
 				<itunes:author><?=$author;?></itunes:author>
 				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
 				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
