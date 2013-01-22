@@ -6,6 +6,14 @@ function compare_items($a, $b) {
 	return strnatcmp($b["publishedAt_raw"], $a["publishedAt_raw"]); // Order switched to have reverse sorting
 }
 
+function xmlentites($str) {
+	$str = str_replace("&", "&amp;", $str);
+	$search = array("<", ">", "'", "\"");
+	$replace = array("&lt;", "&gt;", "&apos;", "&quot;");
+	$str = str_replace($search, $replace, $str);
+	return $str;
+}
+
 if($handle = opendir('data/meta')){
 	while (false !== ($file = readdir($handle))) {
         if(strstr($file, 'json')){
@@ -16,17 +24,14 @@ if($handle = opendir('data/meta')){
 
 $items = array();
 
-$search = array("PT", "H", "M", "S");
-$replace = array ("", ":", ":", "");
-
 foreach ($metafiles as $metafile) {
 	$item = array();
-	$item["duration"] = str_replace($search, $replace, $metafile["duration"]);
+	$item["duration"] = str_replace(array("PT", "H", "M", "S"), array ("", ":", ":", ""), $metafile["duration"]);
 	$item["description"] = $metafile["description"];
 	$item["summary"] = substr($metafile["description"], 0, 255);
 	$item["id"] = $metafile["id"];
 	$item["publishedAt"] = date(DATE_RFC822, strtotime($metafile["publishedAt"]));
-	$item["title"] = htmlentities($metafile["title"]);
+	$item["title"] = xmlentities($metafile["title"]);
 	$item["publishedAt_raw"] = strtotime($metafile["publishedAt"]);
 	$item["filesize"] = filesize('data/videos/'.$item["id"].'.mp4');
 	$items[] = $item;
