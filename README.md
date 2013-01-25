@@ -9,6 +9,9 @@ Warning: This script will need a ton of diskspace, since it will download _ALL_ 
 
 This stuff was [@silsha](https://twitter.com/silsha)'s idea, and was written by [@silsha](https://twitter.com/silsha) and [@tiefpunkt](https://twitter.com/tiefpunkt). Enjoy.
 
+## Prerequisites
+* [Google APIs Client Library for Python](http://code.google.com/p/google-api-python-client/) ([Debian Package](http://google-api-python-client.googlecode.com/files/python-google-api-python-client_1.0.0-6_all.deb)) 
+
 ## Install
 1. Download the script.
 2. Get a YouTube API key, and put it in a copy of config.yaml.example, with the name config.yaml.
