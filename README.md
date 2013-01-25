@@ -11,8 +11,8 @@ This stuff was [@silsha](https://twitter.com/silsha)'s idea, and was written by 
 
 ## Install
 1. Download the script.
-2. Get a YouTube API key, and put it in a copy of config.py.example, with the name config.py.
-3. Set all the other options in the python script, the config.php and maybe even in feed.php (hopefully, we'll get around to pull all this into one single file).
+2. Get a YouTube API key, and put it in a copy of config.yaml.example, with the name config.yaml.
+3. Set all the other options in config.php and maybe even in feed.php (hopefully, we'll get around to pull all this into one single file).
 4. Run channel.py, and make it a cron job.
 5. Put the htdocs-folder on the web, e.g. by setting it as a DocumentRoot in Apache
 6. Submit your feed to iTunes.

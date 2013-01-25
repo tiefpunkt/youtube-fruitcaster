@@ -1,4 +1,5 @@
 config.py
+config.yaml
 data/meta/*.json
 data/videos/*.mp4
 data/videos/*.part

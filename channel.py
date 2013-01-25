@@ -5,12 +5,11 @@ import json
 import os
 import subprocess
 
-import config
+import yaml
 
-# Set DEVELOPER_KEY to the "API key" value from the "Access" tab of the
-# Google APIs Console http://code.google.com/apis/console#access
-# Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = config.DEVELOPER_KEY
+config = yaml.load(file("config.yaml","r"))
+
+DEVELOPER_KEY = config["youtube"]["api_key"]
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
@@ -18,12 +17,12 @@ DIR_DATA = "data"
 DIR_METADATA = DIR_DATA + "/meta"
 DIR_VIDEOS = DIR_DATA + "/videos"
 
-YOUTUBE_DL = "/home/severin/bin/youtube-dl"
+YOUTUBE_DL = config["paths"]["youtube-dl"]
 
 def youtube_search():
 	search_request = youtube.search().list(
 		#q="raumzeitlabor",
-		channelId="UCG0GYTzLZNbITXIO63mjWlQ",
+		channelId=config["youtube"]["channel_id"],
 		part="id",
 		maxResults=50
 	)
