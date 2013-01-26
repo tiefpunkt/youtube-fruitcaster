@@ -1,6 +1,9 @@
 <?php
 
-require_once('config.php');
+include('Spyc.php');
+
+$yaml = Spyc::YAMLLoad('../config.yaml');
+$config = $yaml["feed"];
 
 function compare_items($a, $b) {
 	return strnatcmp($b["publishedAt_raw"], $a["publishedAt_raw"]); // Order switched to have reverse sorting
@@ -48,20 +51,20 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
 	<channel>
-		<title><?= $title; ?></title>
-		<link><?= $url; ?></link>
-		<language><?= $language; ?></language>
-		<copyright>&#x2117; <?= date("Y")." ".$author;?></copyright>
-		<itunes:subtitle><?= $subtitle; ?></itunes:subtitle>
-		<itunes:author><?= $author; ?></itunes:author>
-		<itunes:summary><?= $summary; ?></itunes:summary>
-		<description><?= $description; ?></description>
+		<title><?= $config["title"]; ?></title>
+		<link><?= $config["url"]; ?></link>
+		<language><?= $config["language"]; ?></language>
+		<copyright>&#x2117; <?= date("Y")." ".$config["author"];?></copyright>
+		<itunes:subtitle><?= $config["subtitle"]; ?></itunes:subtitle>
+		<itunes:author><?= $config["author"]; ?></itunes:author>
+		<itunes:summary><?= $config["summary"]; ?></itunes:summary>
+		<description><?= $config["description"]; ?></description>
 		<itunes:owner>
-			<itunes:name><?= $owner_name; ?></itunes:name>
-			<itunes:email><?= $owner_mail; ?></itunes:email>
+			<itunes:name><?= $config["owner_name"]; ?></itunes:name>
+			<itunes:email><?= $config["owner_mail"]; ?></itunes:email>
 		</itunes:owner>
 		<itunes:image href="http://rzlcast.horo.li/podcast1400.png" />
-		<itunes:category text="Technology" />
+		<itunes:category text="<?= $config["category"]; ?>" />
 		<itunes:explicit>clean</itunes:explicit>
 		<itunes:new-feed-url>http://feeds.feedburner.com/RaumzeitlaborPodcast</itunes:new-feed-url>		
 
