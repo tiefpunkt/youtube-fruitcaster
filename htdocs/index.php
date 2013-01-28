@@ -84,7 +84,7 @@ foreach ($feed->get_items() as $feed_item){
 		</tr>
 		<?php foreach ($items as $item) { ?>
 		<tr id="<?=$item["id"];?>">
-			<td><?=$item["title"];?></td><td><?=$item["publishedAt"];?></td><td style="text-align: right;"><?=$item["duration"];?></td><td style="text-align: center;"><a href="<?=$item["file"];?>">.mp4</a></td><td><a href="https://www.youtube.com/watch?v=<?=$item["id"];?>">YouTube</a></td>
+			<td><?=$item["title"];?></td><td><?=$item["publishedAt"];?></td><td style="text-align: right;"><?=$item["duration"];?></td><td style="text-align: center;"><a href="<?=$item["file"];?>">.mp4</a>&nbsp;<a href="data/audio/<?=$item["id"];?>.aac">.aac</a></td><td><a href="https://www.youtube.com/watch?v=<?=$item["id"];?>">YouTube</a></td>
 		</tr>
 		<?php } ?>
 
