@@ -16,8 +16,10 @@ YOUTUBE_API_VERSION = "v3"
 DIR_DATA = "data"
 DIR_METADATA = DIR_DATA + "/meta"
 DIR_VIDEOS = DIR_DATA + "/videos"
+DIR_AUDIO = DIR_DATA + "/audio"
 
 YOUTUBE_DL = config["paths"]["youtube-dl"]
+FFMPEG = config["paths"]["ffmpeg"]
 
 def youtube_search():
 	search_request = youtube.search().list(
@@ -78,6 +80,11 @@ def check_video(video):
 	if not os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
 		subprocess.call([YOUTUBE_DL, "-o" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "http://youtu.be/" + video["id"]])
 
+def check_audio(video):
+	if not os.path.isfile(DIR_AUDIO + "/" + video["id"] + ".aac"):
+		if os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
+			subprocess.call([FFMPEG, "-i" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "-acodec copy", DIR_AUDIO + "/" + video["id"] + ".aac",)
+
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
 		developerKey=DEVELOPER_KEY)
 		
@@ -86,3 +93,4 @@ videos = youtube_search()
 for video in videos:
 	write_metadata(video)
 	check_video(video)
+	check_audio(video)
