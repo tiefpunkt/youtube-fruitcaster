@@ -43,6 +43,16 @@ foreach ($feed->get_items() as $feed_item){
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	<meta charset="utf-8">
+	<script type="text/javascript">
+    	/* <![CDATA[ */
+    	(function() {
+    	        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+    	        s.type = 'text/javascript';
+    	        s.async = true;
+    	        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+    	        t.parentNode.insertBefore(s, t);
+    	})();
+    /* ]]> */</script>
 </head>
 <body>
 	<div class="container-narrow">
@@ -61,6 +71,11 @@ foreach ($feed->get_items() as $feed_item){
 		<h1>RaumZeitLabor Podcast</h1>
 		<p class="lead">Freies Wissen &mdash; nun auch als Podcast</p>
 		<a href="https://itunes.apple.com/de/podcast/raumzeitlabor-podcast/id595143602?l=de"><img src="subscribe.png"></a>
+		<div style="margin-top: 10px;">
+            <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="https://raumzeitlabor.de/wiki/Podcast"></a>
+            <noscript><a href="http://flattr.com/thing/1106488/RaumZeitLabor-Podcast" target="_blank">
+            <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+        </div>
 	  </div>
 
 	  <hr>
