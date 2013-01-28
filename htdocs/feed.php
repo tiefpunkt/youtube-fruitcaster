@@ -63,7 +63,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 			<itunes:name><?= $config["owner_name"]; ?></itunes:name>
 			<itunes:email><?= $config["owner_mail"]; ?></itunes:email>
 		</itunes:owner>
-		<itunes:image href="http://rzlcast.horo.li/podcast1400.png" />
+		<itunes:image href="http://podcast.raumzeitlabor.de/podcast1400.png" />
 		<itunes:category text="<?= $config["category"]; ?>" />
 		<itunes:explicit>clean</itunes:explicit>
 		<itunes:new-feed-url>http://feeds.feedburner.com/RaumzeitlaborPodcast</itunes:new-feed-url>		
@@ -72,13 +72,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 			<item>
 				<title><?=$item["title"];?></title>
 				<description><![CDATA[<?=$item["description"];?>]]></description>
-				<enclosure url="http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4" length="<?=$item["filesize"];?>" type="video/mp4" />
+				<enclosure url="http://podcast.raumzeitlabor.de/data/videos/<?=$item["id"];?>.mp4" length="<?=$item["filesize"];?>" type="video/mp4" />
 				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4</guid>
 				<pubDate><?=$item["publishedAt"];?></pubDate>
 				<itunes:author><?=$author;?></itunes:author>
 				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
 				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
-				<itunes:image href="http://rzlcast.horo.li/podcast.png" />
+				<itunes:image href="http://podcast.raumzeitlabor.de/podcast.png" />
 				<itunes:duration><?=$item["duration"];?></itunes:duration>
 			</item>
 			<?}?>
