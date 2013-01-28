@@ -39,28 +39,18 @@ foreach ($feed->get_items() as $feed_item){
 <html>
 <head>
 	<title>RaumZeitLabor Podcast</title>
+	
+	<meta charset="utf-8">
+	
+	<link rel="alternate" type="application/rss+xml" title="Podcast Feed" href="http://feeds.feedburner.com/RaumzeitlaborPodcast">
+	
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
-	<meta charset="utf-8">
+	
+	<script type="text/javascript" src = "http://api.flattr.com/js/0.6/load.js?mode=auto"></script>
 	<script src="js/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-                $("#" + window.location.hash.replace("#", "")).addClass("info");
-        });
-        window.onhashchange = function(){
-                $("tr").removeClass("info");
-                $("#" + window.location.hash.replace("#", "")).addClass("info");
-        };
-    	/* <![CDATA[ */
-    	(function() {
-    	        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-    	        s.type = 'text/javascript';
-    	        s.async = true;
-    	        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-    	        t.parentNode.insertBefore(s, t);
-    	})();
-    /* ]]> */</script>
+	<script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 	<div class="container-narrow">
@@ -76,14 +66,14 @@ foreach ($feed->get_items() as $feed_item){
 	  <hr>
 
 	  <div class="jumbotron">
-		<h1>RaumZeitLabor Podcast</h1>
-		<p class="lead">Freies Wissen &mdash; nun auch als Podcast</p>
-		<a href="https://itunes.apple.com/de/podcast/raumzeitlabor-podcast/id595143602?l=de"><img src="subscribe.png"></a>
-		<div style="margin-top: 10px;">
-            <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="https://raumzeitlabor.de/wiki/Podcast"></a>
-            <noscript><a href="http://flattr.com/thing/1106488/RaumZeitLabor-Podcast" target="_blank">
-            <img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
-        </div>
+			<h1>RaumZeitLabor Podcast</h1>
+			<p class="lead">Freies Wissen &mdash; nun auch als Podcast</p>
+			<a href="https://itunes.apple.com/de/podcast/raumzeitlabor-podcast/id595143602?l=de"><img src="subscribe.png"></a>
+			<div style="margin-top: 10px;">
+				<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="https://raumzeitlabor.de/wiki/Podcast"></a>
+				<noscript><a href="http://flattr.com/thing/1106488/RaumZeitLabor-Podcast" target="_blank">
+				<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+			</div>
 	  </div>
 
 	  <hr>
