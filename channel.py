@@ -83,7 +83,7 @@ def check_video(video):
 def check_audio(video):
 	if not os.path.isfile(DIR_AUDIO + "/" + video["id"] + ".aac"):
 		if os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
-			subprocess.call([FFMPEG, "-i" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "-acodec copy", DIR_AUDIO + "/" + video["id"] + ".aac",)
+			subprocess.call([FFMPEG, "-i", DIR_VIDEOS + "/" + video["id"] + ".mp4", "-acodec", "copy", DIR_AUDIO + "/" + video["id"] + ".aac"])
 
 youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
 		developerKey=DEVELOPER_KEY)

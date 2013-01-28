@@ -3,4 +3,5 @@ config.yaml
 data/meta/*.json
 data/videos/*.mp4
 data/videos/*.part
+data/audio/*.aac
 *.pyc
