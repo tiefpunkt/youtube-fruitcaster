@@ -11,11 +11,13 @@ This stuff was [@silsha](https://twitter.com/silsha)'s idea, and was written by 
 
 ## Prerequisites
 * [Google APIs Client Library for Python](http://code.google.com/p/google-api-python-client/) ([Debian Package](http://google-api-python-client.googlecode.com/files/python-google-api-python-client_1.0.0-6_all.deb)) 
+* python-yaml
+* python-dateutil
 
 ## Install
 1. Download the script.
 2. Get a YouTube API key, and put it in a copy of config.yaml.example, with the name config.yaml.
-3. Set all the other options in config.php and maybe even in feed.php (hopefully, we'll get around to pull all this into one single file).
+3. Check the feed for any configuration settings we forgot to put in config.yaml
 4. Run channel.py, and make it a cron job.
 5. Put the htdocs-folder on the web, e.g. by setting it as a DocumentRoot in Apache
 6. Submit your feed to iTunes.
