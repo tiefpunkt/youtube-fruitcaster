@@ -28,7 +28,7 @@ def youtube_search():
 		#q="raumzeitlabor",
 		channelId=config["youtube"]["channel_id"],
 		part="id",
-		maxResults=50
+		maxResults=25
 	)
 	search_response = search_request.execute()
 
