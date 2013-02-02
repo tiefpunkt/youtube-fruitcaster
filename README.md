@@ -12,7 +12,6 @@ This stuff was [@silsha](https://twitter.com/silsha)'s idea, and was written by 
 ## Prerequisites
 * [Google APIs Client Library for Python](http://code.google.com/p/google-api-python-client/) ([Debian Package](http://google-api-python-client.googlecode.com/files/python-google-api-python-client_1.0.0-6_all.deb)) 
 * python-yaml
-* python-dateutil
 
 ## Install
 1. Download the script.

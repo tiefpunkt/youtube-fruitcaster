@@ -4,8 +4,8 @@ from apiclient.discovery import build
 import json
 import os
 import subprocess
-from datetime import datetime
-from dateutil import parser
+#from datetime import datetime
+#from dateutil import parser
 
 import yaml
 
@@ -79,11 +79,11 @@ def write_metadata(video):
 		f.close()
 	
 def check_video(video):
-	publishedAt = parser.parse(video["publishedAt"]);
-	age = datetime.utcnow() - publishedAt.replace(tzinfo = None);
-	if age.days > 0 or age.seconds > 3600*12:
-		if not os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
-			subprocess.call([YOUTUBE_DL, "-o" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "http://youtu.be/" + video["id"]])
+#	publishedAt = parser.parse(video["publishedAt"]);
+#	age = datetime.utcnow() - publishedAt.replace(tzinfo = None);
+#	if age.days > 0 or age.seconds > 3600*12:
+	if not os.path.isfile(DIR_VIDEOS + "/" + video["id"] + ".mp4"):
+		subprocess.call([YOUTUBE_DL, "-o" + DIR_VIDEOS + "/" + video["id"] + ".mp4", "http://youtu.be/" + video["id"]])
 
 def check_audio(video):
 	if not os.path.isfile(DIR_AUDIO + "/" + video["id"] + ".aac"):
