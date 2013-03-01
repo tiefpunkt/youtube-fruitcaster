@@ -78,7 +78,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 				<itunes:author><?=$author;?></itunes:author>
 				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
 				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
-				<itunes:image href="http://podcast.raumzeitlabor.de/podcast.png" />
+				<itunes:image href="https://img.youtube.com/vi/<?=$item["id"];?>/hqdefault.jpg" />
 				<itunes:duration><?=$item["duration"];?></itunes:duration>
 			</item>
 			<?}?>
