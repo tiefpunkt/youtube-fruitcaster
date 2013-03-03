@@ -15,3 +15,6 @@ feed:
   owner_name: RaumzeitLabor e.V.
   owner_mail: info@raumzeitlabor.de
   category: Technology
+  flattr:
+    user_id: raumzeitlabor
+    tags: podcast,raumzeitlabor,rzl,hackerspace

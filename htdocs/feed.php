@@ -40,6 +40,10 @@ foreach ($metafiles as $metafile) {
 	$item["title"] = xmlentities($metafile["title"]);
 	$item["publishedAt_raw"] = strtotime($metafile["publishedAt"]);
 	$item["filesize"] = filesize('data/videos/'.$item["id"].'.mp4');
+	
+	$item["flattr_url"] = "https://flattr.com/submit/auto?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D{$item["id"]}&amp;user_id={$config["flattr"]["user_id"]}&amp;title=".urlencode($item["title"])."&amp;tags={$config["flattr"]["tags"]}&amp;category=video";
+	
+	$item["description"] .= "<p><a href=\"{$item["flattr_url"]}\" title=\"Flattr\"><img src=\"https://api.flattr.com/button/flattr-badge-large.png\"/></a></p>";	
 	$items[] = $item;
 }
 
@@ -49,7 +53,7 @@ usort($items, "compare_items");
 header("Content-Type: application/rss+xml");
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
 	<channel>
 		<title><?= $config["title"]; ?></title>
 		<link><?= $config["url"]; ?></link>
@@ -80,6 +84,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 				<itunes:summary><![CDATA[<?=$item["summary"];?>]]></itunes:summary>
 				<itunes:image href="https://img.youtube.com/vi/<?=$item["id"];?>/hqdefault.jpg" />
 				<itunes:duration><?=$item["duration"];?></itunes:duration>
+				<atom:link rel="payment" href="<?=$item["flattr_url"];?>" type="text/html" />
 			</item>
 			<?}?>
 			
