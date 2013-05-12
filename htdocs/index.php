@@ -58,7 +58,7 @@ foreach ($feed->get_items() as $feed_item){
 	  <div class="masthead">
 		<ul class="nav nav-pills pull-right">
 		  <li class="active"><a href="index.php">Vortragsliste</a></li>
-		  <li><a href="imprint.php">Kontakt/Impressum</a></li>
+		  <li><a href="imprint.htm">Kontakt/Impressum</a></li>
 		</ul>
 		<h3 class="muted">RaumZeitLabor Podcast</h3>
 	  </div>
