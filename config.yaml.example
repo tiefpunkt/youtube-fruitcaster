@@ -1,6 +1,6 @@
 paths:
   youtube-dl: /usr/local/bin/youtube-dl
-  ffmpeg: /usr/bin/ffmpeg
+  ffmpeg: /usr/bin/avconv
 youtube:
   api_key: YOUR_API_KEY
   channel_id: UCG0GYTzLZNbITXIO63mjWlQ
