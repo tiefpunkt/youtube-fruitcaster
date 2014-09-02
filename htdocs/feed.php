@@ -77,7 +77,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 				<title><?=$item["title"];?></title>
 				<description><![CDATA[<?=$item["description"];?>]]></description>
 				<enclosure url="http://podcast.raumzeitlabor.de/data/videos/<?=$item["id"];?>.mp4" length="<?=$item["filesize"];?>" type="video/mp4" />
-				<guid>http://rzlcast.horo.li/data/videos/<?=$item["id"];?>.mp4</guid>
+				<guid>http://podcast.raumzeitlabor.de/data/videos/<?=$item["id"];?>.mp4</guid>
 				<pubDate><?=$item["publishedAt"];?></pubDate>
 				<itunes:author><?=$author;?></itunes:author>
 				<itunes:subtitle><![CDATA[<?=$item["description"];?>]]></itunes:subtitle>
