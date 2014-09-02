@@ -4,4 +4,12 @@ data/meta/*.json
 data/videos/*.mp4
 data/videos/*.part
 data/audio/*.aac
+data/torrent/*.torrent
 *.pyc
+*.log
+.bash_history
+.lesshst
+.nm
+.rtorrent.rc
+.viminfo
+
